@@ -41,6 +41,14 @@ RUN yes | pecl install xdebug \
     && echo "xdebug.remote_mode=req" >> /etc/php5/apache2/php.ini \
     && echo "xdebug.remote_port=9000" >> /etc/php5/apache2/php.ini \
     && echo "xdebug.max_nesting_level=300" >> /etc/php5/apache2/php.ini \
-    && echo "xdebug.remote_connect_back=1" >> /etc/php5/apache2/php.ini
+    && echo "xdebug.remote_connect_back=1" >> /etc/php5/apache2/php.ini \
+    && echo "zend_extension=$(find /usr/lib/php5/ -name xdebug.so)" >> /etc/php5/cli/php.ini \
+    && echo "xdebug.remote_enable=1" >> /etc/php5/cli/php.ini \
+    && echo "xdebug.remote_handler=dbgp" >> /etc/php5/cli/php.ini \
+    && echo "xdebug.remote_mode=req" >> /etc/php5/cli/php.ini \
+    && echo "xdebug.remote_port=9000" >> /etc/php5/cli/php.ini \
+    && echo "xdebug.max_nesting_level=300" >> /etc/php5/cli/php.ini \
+    && echo "xdebug.remote_connect_back=1" >> /etc/php5/cli/php.ini
 # put your ip for debugging
 #RUN echo "xdebug.remote_host=<local ip>" >> /etc/php5/apache2/php.ini
+#RUN echo "xdebug.remote_host=<local ip>" >> /etc/php5/cli/php.ini
